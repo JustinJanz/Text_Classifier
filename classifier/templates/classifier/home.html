@@ -1,0 +1,40 @@
+{% extends "classifier/base.html" %}
+{% block content %}
+
+<div class="card" style="width: 60rem;">
+ 
+  <div class="card-body">
+ 
+    <h5 class="card-title text-primary text-center">Text Classifier</h5>
+ 
+    <p class="card-text ">Text classification also known as text tagging or text categorization is the process of 
+    categorizing text into organized groups. By using Natural Language Processing (NLP), text classifiers can 
+    automatically analyze text and then assign a set of pre-defined tags or categories based on its content.
+    </p>
+
+  </div>
+ 
+</div>
+
+<div class='container width: 80rem;'>
+<h1 class="text-center"> </h1>
+<p class="text-center">Enter the text that to be classified below</p>
+    <form method ="post" class='text-center' >
+    {% csrf_token %} 
+    {{ form }}
+    <br>
+    <button type="Submit" class="btn btn-primary" data-toggle="modal" data-target="#confirm_submit">
+    Submit
+    </button>
+    </form>
+    {% if successful_submit %}
+        <article class="media content-section">
+            <div class="media-body">
+            <h5>Classification</h5>
+            <p class="article-content">Entered Text :<br>{{ posts.given_text }}</p>
+            <p class="article-content">Category :{{ posts.Category }}</p>
+            <p class="article-content">Sub Category: {{ posts.Sub_Category }}</p>
+            </div>
+        </article>
+    {% endif %}
+{% endblock content %}
